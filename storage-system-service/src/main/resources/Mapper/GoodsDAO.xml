@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.GoodsDAO">
+
+    <resultMap id="goodsList" type="com.alibaba.hym.rt.storageSystem.service.model.GoodsDTO">
+        <id column="barcode"  property="barcode" />
+        <result column="name" property="name" />
+        <result column="type"  property="type" />
+        <result column="width" property="width"/>
+        <result column="height" property="height"/>
+        <result column="detail" property="describe"/>
+        <result column="unit_price" property="unitPrice"/>
+        <result column="img_path" property="imgPath"/>
+        <result column="created_time" property="createdTime"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.alibaba.hym.rt.storageSystem.service.model.GoodsDO">
+        insert into goods_info (barcode,name,type,width,height,detail
+        ,img_path,created_time,modified_time)
+        values
+        (#{goods.barcode},#{goods.name},#{goods.type},#{goods.width},#{goods.height},#{goods.describe}
+        ,#{goods.imgPath},#{goods.createdTime},#{goods.modifiedTime})
+    </insert>
+    <select id="selectByPage" parameterType="com.alibaba.hym.rt.storageSystem.service.model.PaginationDO"
+    resultMap="goodsList">
+        select *from goods_info limit #{query.start},#{query.count}
+    </select>
+
+    <select id="selectAll" parameterType="com.alibaba.hym.rt.storageSystem.service.model.PaginationDO"
+        resultMap="goodsList">
+        select *from goods_info
+    </select>
+
+    <select id="selectById" resultType="integer">
+        select  count(*) from goods_info
+    </select>
+</mapper>

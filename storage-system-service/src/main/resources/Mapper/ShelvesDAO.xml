@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.ShelvesDAO">
+
+    <resultMap id="shelvesList" type="com.alibaba.hym.rt.storageSystem.service.model.ShelvesDTO">
+        <result column="store_id" property="storeId"/>
+        <result column="shelves_code" property="shelvesCode"/>
+        <result column="width" property="width"/>
+        <result column="height" property="height"/>
+        <result column="laminate_num" property="laminateNum"/>
+        <result column="area" property="area"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.alibaba.hym.rt.storageSystem.service.model.ShelvesDO">
+        insert into shelves_info (shelves_code,width,height,laminate_num,area)
+        values
+        (#{shelves.shelvesCode},#{shelves.width},#{shelves.height},#{shelves.laminateNum}
+        ,#{shelves.area})
+    </insert>
+
+    <select id="selectCount" parameterType="integer" resultType="integer">
+        select count(*) from shelves_info
+    </select>
+
+    <select id="selectAll" parameterType="com.alibaba.hym.rt.storageSystem.service.model.PaginationDO"
+            resultMap="shelvesList">
+         select *from shelves_info where store_id = #{query.data} limit #{query.start},#{query.count}
+    </select>
+
+    <select id="selectByStoreId" resultMap="shelvesList" parameterType="int">
+         select *from shelves_info where store_id = #{storeId}
+    </select>
+</mapper>

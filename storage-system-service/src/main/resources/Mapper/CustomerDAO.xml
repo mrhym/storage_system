@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.CustomerDAO">
+
+    <select id="selectCustomerFlow" parameterType="Date" resultType="integer">
+        select count(*) from customer_flow where DATE(created_time) = DATE(#{date})
+    </select>
+
+
+    <select id="selectCustomerFlowAll"  resultType="integer">
+        select count(*) from customer_flow
+    </select>
+
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+    </parent>
+    <groupId>com.alibaba.hym.rt</groupId>
+    <artifactId>storage-system</artifactId>
+    <version>1.0.0</version>
+    <name>storage-system</name>
+    <description>Demo project for Spring Boot</description>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <modules>
+        <module>storage-system-start</module>
+        <module>storage-system-web</module>
+        <module>storage-system-api</module>
+        <module>storage-system-service</module>
+    </modules>
+
+    <dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.apache.shiro</groupId>
+              <artifactId>shiro-spring</artifactId>
+              <version>1.4.0</version>
+          </dependency>
+
+          <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+              <version>3.4</version>
+          </dependency>
+          <dependency>
+              <groupId>com.auth0</groupId>
+              <artifactId>java-jwt</artifactId>
+              <version>3.1.0</version>
+          </dependency>
+
+          <!-- alibaba的druid数据库连接池 -->
+          <dependency>
+              <groupId>com.alibaba</groupId>
+              <artifactId>druid-spring-boot-starter</artifactId>
+              <version>1.1.0</version>
+          </dependency>
+
+          <!-- MySQL数据库依赖 -->
+          <dependency>
+              <groupId>mysql</groupId>
+              <artifactId>mysql-connector-java</artifactId>
+              <version>5.1.6</version>
+          </dependency>
+
+
+          <!-- jedis -->
+          <dependency>
+              <groupId>redis.clients</groupId>
+              <artifactId>jedis</artifactId>
+              <version>3.0.1</version>
+          </dependency>
+
+          <dependency>
+              <groupId>org.apache.rocketmq</groupId>
+              <artifactId>rocketmq-client</artifactId>
+              <version>4.5.0</version>
+          </dependency>
+
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-tx</artifactId>
+              <version>5.1.5.RELEASE</version>
+          </dependency>
+          <dependency>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.16.10</version>
+          </dependency>
+
+          <dependency>
+              <groupId>com.google.collections</groupId>
+              <artifactId>google-collections</artifactId>
+              <version>1.0</version>
+          </dependency>
+      </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+
+
+    </dependencies>
+
+</project>

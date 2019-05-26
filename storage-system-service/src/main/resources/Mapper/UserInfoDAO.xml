@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.UserInfoDAO">
+
+    <resultMap id="userInfo" type="com.alibaba.hym.rt.storageSystem.service.model.UserInfoDTO">
+        <result column="username" property="username"/>
+        <result column="name" property="name"/>
+        <result column="store_id" property="storeId"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="profile_path" property="profileImg"/>
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" parameterType="string" resultMap="userInfo">
+        select *from user_info where username=#{user.username}
+    </select>
+    <update id="update" parameterType="com.alibaba.hym.rt.storageSystem.service.model.UserInfoDO">
+        update user_info set profile_path = #{info.profileImg} where username = #{info.username}
+    </update>
+</mapper>

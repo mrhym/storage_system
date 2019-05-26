@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.StoreDAO">
+
+    <resultMap id="storeList" type="com.alibaba.hym.rt.storageSystem.service.model.StoreDTO">
+        <result column="store_id" property="storeId"/>
+        <result column="store_name" property="storeName"/>
+        <result column="address" property="address"/>
+        <result column="created_time" property="createdTime"/>
+    </resultMap>
+
+    <select id="selectById" parameterType="integer" resultMap="storeList" >
+        select *from store_info where store_id = #{id}
+    </select>
+</mapper>

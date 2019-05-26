@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.OrderDetailDAO">
+
+    <resultMap id="orderList" type="com.alibaba.hym.rt.storageSystem.service.model.GoodsDetailDTO">
+        <id column="order_id" property="orderId"/>
+        <result column="store_id" property="storeId"/>
+        <result column="barcode" property="barcode"/>
+        <result column="goods_name" property="goodsName"/>
+        <result column="goods_number" property="goodsNumber"/>
+        <result column="unit_price" property="unitPrice"/>
+    </resultMap>
+
+    <select id="selectByOrderId" parameterType="integer" resultMap="orderList">
+        select *from order_detail_info where store_id =#{storeId} and order_id = #{orderId}
+    </select>
+
+
+
+
+
+</mapper>

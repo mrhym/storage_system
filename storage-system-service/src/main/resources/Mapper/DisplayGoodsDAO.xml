@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.DisplayGoodsDAO">
+
+    <resultMap id="displayList" type="com.alibaba.hym.rt.storageSystem.service.model.DisplayDTO">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="store_id" property="storeId"/>
+        <result column="shelves_code" property="shelvesCode"/>
+        <result column="laminate_num" property="laminateNum"/>
+        <result column="barcode" property="barcode"/>
+        <result column="goods_name" property="goodsName"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.alibaba.hym.rt.storageSystem.service.model.DisplayDO">
+
+       insert into display_surface values (#{display.username},#{display.storeId}
+       ,#{display.shelvesCode},#{display.laminateNum},#{display.barcode},#{display.goodsName})
+   </insert>
+
+    <select id="selectByStoreId" parameterType="int" resultMap="displayList">
+        select *from display_surface where store_id = #{storeId} order by shelves_code,laminate_num ASC
+    </select>
+
+    <update id="update" parameterType="com.alibaba.hym.rt.storageSystem.service.model.DisplayDO">
+        update display_surface set shelves_code = #{display.shelvesCode},laminate_num = #{display.laminateNum}
+        where id = #{display.id}
+    </update>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.hym.rt.storageSystem.service.dao.OrderDAO">
+
+    <resultMap id="orderList" type="com.alibaba.hym.rt.storageSystem.service.model.OrderDTO">
+        <id column="order_id" property="orderId"/>
+        <result column="store_id" property="storeId"/>
+        <result column="username" property="username"/>
+        <result column="charge" property="charge"/>
+        <result column="status" property="status"/>
+        <result column="created_time" property="createdTime"/>
+    </resultMap>
+
+
+    <select id="selectChargeByOneDay" parameterType="date" resultType="integer">
+        select sum(charge) from order_info where DATE(created_time) = DATE(#{date})
+    </select>
+
+    <select id="selectChargeAmount" resultType="integer">
+        select sum(charge) from order_info
+    </select>
+
+
+    <select id="selectOrderCount" parameterType="Date" resultType="integer">
+        select count(*) from order_info where DATE(created_time) = DATE(#{date})
+    </select>
+
+
+    <select id="selectOrderCountAll" resultType="integer">
+        select count(*) from order_info
+    </select>
+
+    <select id="selectOrderCountByStoreId" resultType="integer">
+        select count(*) from order_info where  store_id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="orderList" parameterType="integer">
+        select  order_info.order_id,order_info.store_id,order_info.username,order_info.charge
+        ,order_status.status,order_info.created_time from order_info,order_status
+        where  order_status.id = order_info.status and order_info.store_id = #{id};
+    </select>
+
+</mapper>
